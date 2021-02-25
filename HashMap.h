@@ -1,9 +1,12 @@
+
 include <iostream>
 include <unordered_map>
 include <fstream>
 
 using namespace std;
 
+#ifndef UNTITLED_HASHMAP_H
+#define UNTITLED_HASHMAP_H
 
 struct Pair
 {
@@ -42,7 +45,7 @@ class HashMap
             }
         }
 
-        bool check(string word,int s, int a, int b, int c)
+        bool check(string word,int s, int b, int d)
         {
             int x = 0, limit = s;
             char key = 'S';
@@ -70,14 +73,6 @@ class HashMap
                 {
                     if (htmap[key][i].nonter == 'S') x++;
 
-                    else if (htmap[key][i].nonter == 'A')
-                            {
-                                ++x;
-                                if (key != 'A') i = -1;
-                                limit = a;
-                                key = 'A';
-                            }
-
                     else if (htmap[key][i].nonter == 'B')
                             {
                                 ++x;
@@ -85,12 +80,13 @@ class HashMap
                                 limit = b;
                                 key = 'B';
                             }
-                    else if (htmap[key][i].nonter == 'C')
+
+                    else if (htmap[key][i].nonter == 'D')
                             {
                                 ++x;
-                                if (key != 'C') i = -1;
-                                limit = c;
-                                key = 'C';
+                                if (key != 'D') i = -1;
+                                limit = d;
+                                key = 'D';
                             }
 
                 }
@@ -103,7 +99,7 @@ class HashMap
 
 };
 
-static void read(HashMap &htm, int &s, int &a, int &b, int &c)
+static void read(HashMap &htm, int &s, int &b, int &d)
 {
     string myText, var;
     int n = 0;
@@ -114,9 +110,8 @@ static void read(HashMap &htm, int &s, int &a, int &b, int &c)
     while (getline(file, myText))
     {
         if (myText[0] == 'S') s++;
-        if (myText[0] == 'A') a++;
-        if (myText[0] == 'B') d++;
-        if (myText[0] == 'C') c++;
+        if (myText[0] == 'B') b++;
+        if (myText[0] == 'D') d++;
 
         if (myText[0] != var[0]) n = 0;
 
@@ -126,3 +121,5 @@ static void read(HashMap &htm, int &s, int &a, int &b, int &c)
     }
     file.close();
 }
+
+#endif 
